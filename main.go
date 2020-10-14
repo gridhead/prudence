@@ -7,7 +7,7 @@ import (
 	"fmt"
 )
 
-var cetscycl, orbvcycl, conclave, cnstruct, drvodeal, fissures, invasion, newsevnt bool
+var cetscycl, orbvcycl, conclave, cnstruct, drvodeal, fissures, invasion, newsevnt, nitewave bool
 
 func main() {
 	flag.BoolVar(&cetscycl, "cetscycl", false, "Know the state of Plains of Eidolon")
@@ -18,6 +18,7 @@ func main() {
 	flag.BoolVar(&fissures, "fissures", false, "Know the details of current void fissure missions")
 	flag.BoolVar(&invasion, "invasion", false, "Know the details about current invasions")
 	flag.BoolVar(&newsevnt, "newsevnt", false, "Know the details about current news")
+	flag.BoolVar(&nitewave, "nitewave", false, "Know the details about nightwave missions")
 	flag.Parse()
 	if cetscycl {
 		requestor.CetusCycle("pc")
@@ -35,6 +36,8 @@ func main() {
 		requestor.InvasionData("pc")
 	} else if newsevnt {
 		requestor.NewsEvents("pc")
+	} else if nitewave {
+		requestor.NightWaveChallenges("pc")
 	} else {
 		fmt.Print(colorformat.BackGrnBold(colorformat.ForeBlkBold("PRUDENCE/USAGE")) + " v14102020 by t0xic0der" + "\n" +
 			"Visit https://github.com/t0xic0der/prudence for updates" + "\n" + "\n" +
@@ -46,6 +49,7 @@ func main() {
 			colorformat.ForeGrnRglr("--drvodeal") + " ...... " + "Know the deals available from Darvo" + "\n" +
 			colorformat.ForeGrnRglr("--fissures") + " ...... " + "Know the details of current void fissure missions" + "\n" +
 			colorformat.ForeGrnRglr("--invasion") + " ...... " + "Know the details about current invasions" + "\n" +
-			colorformat.ForeGrnRglr("--newsevnt") + " ...... " + "Know the details about current news" + "\n" + "\n")
+			colorformat.ForeGrnRglr("--newsevnt") + " ...... " + "Know the details about current news" + "\n" +
+			colorformat.ForeGrnRglr("--nitewave") + " ...... " + "Know the details about nightwave missions" + "\n" + "\n")
 	}
 }

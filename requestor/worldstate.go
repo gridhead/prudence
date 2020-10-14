@@ -228,3 +228,37 @@ func NewsEvents(platform string) {
 			"The information could not be fetched")
 	}
 }
+
+func NightWaveChallenges(platform string) {
+	resp, eror := http.Get("https://api.warframestat.us/" + platform + "/nightwave")
+	if eror == nil {
+		body, eror := ioutil.ReadAll(resp.Body)
+		if eror == nil {
+			var jsonobjc gjson.Result = gjson.Parse(string(body))
+			fmt.Println(colorformat.BackGrnBold(colorformat.ForeBlkBold("PRUDENCE/NIGHTWAVE")) + "\n")
+			fmt.Print(colorformat.ForeCynBold("Following are the nightwave challenges") + "\n" +
+				colorformat.ForeGrnRglr("Activation") + " ...... " + jsonobjc.Get("activation").String() + "\n" +
+				colorformat.ForeGrnRglr("Expiry") + "........... " + jsonobjc.Get("expiry").String() + "\n" +
+				colorformat.ForeGrnRglr("Season") + "........... " + jsonobjc.Get("season").String() + "\n")
+			jsonobjc.Get("activeChallenges").ForEach(func(keyd, valu gjson.Result) bool {
+				singchal := gjson.Parse(valu.String())
+				var textobjc string = colorformat.ForeCynBold(singchal.Get("activeChallenges").String()) + "\n" +
+					colorformat.ForeCynBold(singchal.Get("desc").String()) + "\n" +
+					colorformat.ForeGrnRglr("Activation") + " ...... " + singchal.Get("activation").String() + "\n" +
+					colorformat.ForeGrnRglr("Expiry") + " .......... " + singchal.Get("expiry").String() + "\n" +
+					colorformat.ForeGrnRglr("Started at ") + " ..... " + singchal.Get("startString").String() + "\n" +
+					colorformat.ForeGrnRglr("Reputation") + " ...... " + singchal.Get("reputation").String() + " standing" + "\n"
+				fmt.Print(textobjc)
+				return true
+			})
+			fmt.Println()
+			defer resp.Body.Close()
+		} else {
+			fmt.Println(colorformat.BackRedBold(colorformat.ForeBlkBold("PRUDENCE/WARNING")) + "\n" +
+				"The information could not be fetched")
+		}
+	} else {
+		fmt.Println(colorformat.BackRedBold(colorformat.ForeBlkBold("PRUDENCE/WARNING")) + "\n" +
+			"The information could not be fetched")
+	}
+}
