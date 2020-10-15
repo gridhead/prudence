@@ -14,3 +14,7 @@ An easy application to help me know when night falls at PoE so I can hunt eidolo
 ![](images/img5.png)
 - Know the deals available from Darvo
 ![](images/img4.png)
+
+## Contributing
+
+- Thanks for your interest in contributing! There are many ways to contribute to this project. Get started [here](CONTRIBUTING.md).
