@@ -1,11 +1,12 @@
 package requestor
 
 import (
-	"../colorformat"
 	"fmt"
-	"github.com/tidwall/gjson"
 	"io/ioutil"
 	"net/http"
+
+	"../colorformat"
+	"github.com/tidwall/gjson"
 )
 
 func CetusCycle(platform string) {
@@ -67,6 +68,8 @@ func ConclaveChallenges(platform string) {
 		if eror == nil {
 			var jsonobjc gjson.Result = gjson.Parse(string(body))
 			fmt.Println(colorformat.BackGrnBold(colorformat.ForeBlkBold("PRUDENCE/CONCLAVE")))
+			var numberOfRecords string = fmt.Sprintf("%d", len(jsonobjc.Array()))
+			fmt.Println("\n" + colorformat.ForeGrnBold("Total number of records fetched: "+numberOfRecords) + "\n")
 			jsonobjc.ForEach(func(keyd, valu gjson.Result) bool {
 				singchal := gjson.Parse(valu.String())
 				var textobjc string = colorformat.ForeGrnBold(singchal.Get("title").String()) + "\n" +
@@ -119,6 +122,8 @@ func DailyDeals(platform string) {
 		if eror == nil {
 			var jsonobjc gjson.Result = gjson.Parse(string(body))
 			fmt.Println(colorformat.BackGrnBold(colorformat.ForeBlkBold("PRUDENCE/DEALS")))
+			var numberOfRecords string = fmt.Sprintf("%d", len(jsonobjc.Array()))
+			fmt.Println("\n" + colorformat.ForeGrnBold("Total number of records fetched: "+numberOfRecords) + "\n")
 			jsonobjc.ForEach(func(keyd, valu gjson.Result) bool {
 				singchal := gjson.Parse(valu.String())
 				var textobjc string = colorformat.ForeGrnBold(singchal.Get("item").String()) + "\n" +

@@ -1,8 +1,9 @@
 package main
 
 import (
-	"./requestor"
 	"flag"
+
+	"./requestor"
 )
 
 var cetscycl bool
