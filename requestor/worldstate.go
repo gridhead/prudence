@@ -68,8 +68,7 @@ func ConclaveChallenges(platform string) {
 		if eror == nil {
 			var jsonobjc gjson.Result = gjson.Parse(string(body))
 			fmt.Println(colorformat.BackGrnBold(colorformat.ForeBlkBold("PRUDENCE/CONCLAVE")))
-			var numberOfRecords string = fmt.Sprintf("%d", len(jsonobjc.Array()))
-			fmt.Println("\n" + colorformat.ForeGrnBold("Total number of records fetched: "+numberOfRecords) + "\n")
+			printNumberOfRecordsFetched(len(jsonobjc.Array()))
 			jsonobjc.ForEach(func(keyd, valu gjson.Result) bool {
 				singchal := gjson.Parse(valu.String())
 				var textobjc string = colorformat.ForeGrnBold(singchal.Get("title").String()) + "\n" +
@@ -122,8 +121,7 @@ func DailyDeals(platform string) {
 		if eror == nil {
 			var jsonobjc gjson.Result = gjson.Parse(string(body))
 			fmt.Println(colorformat.BackGrnBold(colorformat.ForeBlkBold("PRUDENCE/DEALS")))
-			var numberOfRecords string = fmt.Sprintf("%d", len(jsonobjc.Array()))
-			fmt.Println("\n" + colorformat.ForeGrnBold("Total number of records fetched: "+numberOfRecords) + "\n")
+			printNumberOfRecordsFetched(len(jsonobjc.Array()))
 			jsonobjc.ForEach(func(keyd, valu gjson.Result) bool {
 				singchal := gjson.Parse(valu.String())
 				var textobjc string = colorformat.ForeGrnBold(singchal.Get("item").String()) + "\n" +
@@ -145,4 +143,9 @@ func DailyDeals(platform string) {
 		fmt.Println(colorformat.BackRedBold(colorformat.ForeBlkBold("PRUDENCE/WARNING")))
 		fmt.Println("The information could not be fetched")
 	}
+}
+
+func printNumberOfRecordsFetched(resultArrayLen int) {
+	var numberOfRecords string = fmt.Sprintf("%d", resultArrayLen)
+	fmt.Println("\n" + colorformat.ForeGrnBold("Total number of records fetched: "+numberOfRecords) + "\n")
 }
