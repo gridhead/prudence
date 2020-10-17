@@ -1,11 +1,13 @@
 package requestor
 
 import (
-	"../colorformat"
 	"fmt"
-	"github.com/tidwall/gjson"
 	"io/ioutil"
 	"net/http"
+	"strconv"
+
+	"../colorformat"
+	"github.com/tidwall/gjson"
 )
 
 func CetusCycle(platform string) {
@@ -79,6 +81,8 @@ func ConclaveChallenges(platform string) {
 				fmt.Printf(textobjc)
 				return true
 			})
+			fmt.Println("\n" + colorformat.ForeGrnBold("Total number of records fetched: "+
+				strconv.Itoa(len(jsonobjc.Array()))) + "\n")
 			defer resp.Body.Close()
 		} else {
 			fmt.Println(colorformat.BackRedBold(colorformat.ForeBlkBold("PRUDENCE/WARNING")))
@@ -131,6 +135,8 @@ func DailyDeals(platform string) {
 				fmt.Printf(textobjc)
 				return true
 			})
+			fmt.Println("\n" + colorformat.ForeGrnBold("Total number of records fetched: "+
+				strconv.Itoa(len(jsonobjc.Array()))) + "\n")
 			defer resp.Body.Close()
 		} else {
 			fmt.Println(colorformat.BackRedBold(colorformat.ForeBlkBold("PRUDENCE/WARNING")))
