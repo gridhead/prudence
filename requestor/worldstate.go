@@ -1,14 +1,19 @@
 package requestor
 
 import (
-	"../colorformat"
 	"fmt"
-	"github.com/tidwall/gjson"
 	"io/ioutil"
 	"net/http"
+	"time"
+
+	"github.com/t0xic0der/prudence/colorformat"
+	"github.com/tidwall/gjson"
 )
 
 func CetusCycle(platform string) {
+	startTime := time.Now()
+	defer timeTracking(startTime)
+
 	resp, eror := http.Get("https://api.warframestat.us/" + platform + "/cetusCycle")
 	if eror == nil {
 		body, eror := ioutil.ReadAll(resp.Body)
@@ -35,6 +40,9 @@ func CetusCycle(platform string) {
 }
 
 func VallisCycle(platform string) {
+	startTime := time.Now()
+	defer timeTracking(startTime)
+
 	resp, eror := http.Get("https://api.warframestat.us/" + platform + "/vallisCycle")
 	if eror == nil {
 		body, eror := ioutil.ReadAll(resp.Body)
@@ -61,6 +69,8 @@ func VallisCycle(platform string) {
 }
 
 func ConclaveChallenges(platform string) {
+	startTime := time.Now()
+	defer timeTracking(startTime)
 	resp, eror := http.Get("https://api.warframestat.us/" + platform + "/conclaveChallenges")
 	if eror == nil {
 		body, eror := ioutil.ReadAll(resp.Body)
@@ -91,6 +101,9 @@ func ConclaveChallenges(platform string) {
 }
 
 func ConstructionProgress(platform string) {
+	startTime := time.Now()
+	defer timeTracking(startTime)
+
 	resp, eror := http.Get("https://api.warframestat.us/" + platform + "/constructionProgress")
 	if eror == nil {
 		body, eror := ioutil.ReadAll(resp.Body)
@@ -113,6 +126,8 @@ func ConstructionProgress(platform string) {
 }
 
 func DailyDeals(platform string) {
+	startTime := time.Now()
+	defer timeTracking(startTime)
 	resp, eror := http.Get("https://api.warframestat.us/" + platform + "/dailyDeals")
 	if eror == nil {
 		body, eror := ioutil.ReadAll(resp.Body)
@@ -140,4 +155,8 @@ func DailyDeals(platform string) {
 		fmt.Println(colorformat.BackRedBold(colorformat.ForeBlkBold("PRUDENCE/WARNING")))
 		fmt.Println("The information could not be fetched")
 	}
+}
+
+func timeTracking(startTime time.Time) {
+	fmt.Println("\n" + colorformat.ForeGrnRglr("Request Time") + " ... " + time.Since(startTime).Round(time.Millisecond).String() + "\n")
 }
