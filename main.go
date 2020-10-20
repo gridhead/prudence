@@ -2,7 +2,8 @@ package main
 
 import (
 	"flag"
-	"prudence/requestor"
+
+	"github.com/t0xic0der/prudence/requestor"
 )
 
 var cetscycl bool

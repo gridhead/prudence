@@ -4,7 +4,8 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
-	"prudence/colorformat"
+
+	"github.com/t0xic0der/prudence/colorformat"
 
 	"github.com/tidwall/gjson"
 )
