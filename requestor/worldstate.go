@@ -6,7 +6,6 @@ import (
 	"net/http"
 
 	"github.com/t0xic0der/prudence/colorformat"
-
 	"github.com/tidwall/gjson"
 )
 
