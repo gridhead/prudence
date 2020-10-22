@@ -27,7 +27,7 @@ func CetusCycle(platform string) {
 				colorformat.ForeGrnRglr("Is it day now?") + " . " + jsonobjc.Get("isDay").String() + "\n" +
 				colorformat.ForeGrnRglr("Cetus state") + " .... " + jsonobjc.Get("state").String() + "\n" +
 				colorformat.ForeGrnRglr("Time left") + " ...... " + jsonobjc.Get("timeLeft").String() + "\n"
-			fmt.Printf(textobjc)
+			fmt.Printf(textobjc + "\n")
 			defer resp.Body.Close()
 		} else {
 			fmt.Println(colorformat.BackRedBold(colorformat.ForeBlkBold("PRUDENCE/WARNING")))
@@ -56,7 +56,7 @@ func VallisCycle(platform string) {
 				colorformat.ForeGrnRglr("Is it day now?") + " . " + jsonobjc.Get("isWarm").String() + "\n" +
 				colorformat.ForeGrnRglr("Cetus state") + " .... " + jsonobjc.Get("state").String() + "\n" +
 				colorformat.ForeGrnRglr("Time left") + " ...... " + jsonobjc.Get("timeLeft").String() + "\n"
-			fmt.Printf(textobjc)
+			fmt.Printf(textobjc + "\n")
 			defer resp.Body.Close()
 		} else {
 			fmt.Println(colorformat.BackRedBold(colorformat.ForeBlkBold("PRUDENCE/WARNING")))
@@ -85,8 +85,8 @@ func ConclaveChallenges(platform string) {
 					colorformat.ForeGrnRglr("Expiry") + " ......... " + singchal.Get("expiry").String() + "\n" +
 					colorformat.ForeGrnRglr("Activation") + " ..... " + singchal.Get("activation").String() + "\n" +
 					colorformat.ForeGrnRglr("Mode") + " ........... " + singchal.Get("mode").String() + "\n" +
-					colorformat.ForeGrnRglr("Estimated time") + " . " + singchal.Get("eta").String() + "\n" + "\n"
-				fmt.Printf(textobjc)
+					colorformat.ForeGrnRglr("Estimated time") + " . " + singchal.Get("eta").String() + "\n"
+				fmt.Printf(textobjc + "\n")
 				return true
 			})
 			defer resp.Body.Close()
@@ -113,7 +113,7 @@ func ConstructionProgress(platform string) {
 			var textobjc string = colorformat.ForeGrnBold("Progress so far") + "\n" +
 				colorformat.ForeGrnRglr("Fomorian") + " ....... " + jsonobjc.Get("fomorianProgress").String() + "\n" +
 				colorformat.ForeGrnRglr("Razorback") + " ...... " + jsonobjc.Get("razorbackProgress").String() + "\n"
-			fmt.Printf(textobjc)
+			fmt.Printf(textobjc + "\n")
 			defer resp.Body.Close()
 		} else {
 			fmt.Println(colorformat.BackRedBold(colorformat.ForeBlkBold("PRUDENCE/WARNING")))
@@ -142,8 +142,8 @@ func DailyDeals(platform string) {
 					colorformat.ForeGrnRglr("Expiry") + " ......... " + singchal.Get("expiry").String() + "\n" +
 					colorformat.ForeGrnRglr("Activation") + " ..... " + singchal.Get("activation").String() + "\n" +
 					colorformat.ForeGrnRglr("Sold") + " ........... " + singchal.Get("sold").String() + " of " + singchal.Get("total").String() + " items \n" +
-					colorformat.ForeGrnRglr("Estimated time") + " . " + singchal.Get("eta").String() + "\n" + "\n"
-				fmt.Printf(textobjc)
+					colorformat.ForeGrnRglr("Estimated time") + " . " + singchal.Get("eta").String() + "\n"
+				fmt.Printf(textobjc + "\n")
 				return true
 			})
 			defer resp.Body.Close()
@@ -158,5 +158,5 @@ func DailyDeals(platform string) {
 }
 
 func timeTracking(startTime time.Time) {
-	fmt.Println("\n" + colorformat.ForeGrnRglr("Request Time") + " ... " + time.Since(startTime).Round(time.Millisecond).String() + "\n")
+	fmt.Println(colorformat.ForeGrnRglr("Request Time") + " ... " + time.Since(startTime).Round(time.Millisecond).String() + "\n")
 }
