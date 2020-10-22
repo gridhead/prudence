@@ -1,3 +1,5 @@
+github.com/t0xic0der/spectrum v0.0.0-20201020024104-f9cfd900b2d8 h1:W/1eh6ehTCYqncPkQqSc1NpGiJe+I1Y2UpLbjyscbQQ=
+github.com/t0xic0der/spectrum v0.0.0-20201020024104-f9cfd900b2d8/go.mod h1:DeUxgB2ynKjHZHocObVTh4swx/6fVKqv2f6ru+oihqI=
 github.com/tidwall/gjson v1.6.1 h1:LRbvNuNuvAiISWg6gxLEFuCe72UKy5hDqhxW/8183ws=
 github.com/tidwall/gjson v1.6.1/go.mod h1:BaHyNc5bjzYkPqgLq7mdVzeiRtULKULXLgZFKsxEHI0=
 github.com/tidwall/match v1.0.1 h1:PnKP62LPNxHKTwvHHZZzdOAOCtsJTjo6dZLCwpKm5xc=
