@@ -1,10 +1,10 @@
 package main
 
 import (
-	"./requestor"
 	"flag"
 	"fmt"
 	"github.com/t0xic0der/spectrum"
+	"github.com/t0xic0der/prudence/requestor"
 )
 
 var cetscycl, orbvcycl, conclave, cnstruct, drvodeal, fissures, invasion, newsevnt, nitewave bool
