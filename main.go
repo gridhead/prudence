@@ -1,10 +1,10 @@
 package main
 
 import (
-	"./colorformat"
 	"./requestor"
 	"flag"
 	"fmt"
+	"github.com/t0xic0der/spectrum"
 )
 
 var cetscycl, orbvcycl, conclave, cnstruct, drvodeal, fissures, invasion, newsevnt, nitewave bool
@@ -39,17 +39,17 @@ func main() {
 	} else if nitewave {
 		requestor.NightWaveChallenges("pc")
 	} else {
-		fmt.Print(colorformat.BackGrnBold(colorformat.ForeBlkBold("PRUDENCE/USAGE")) + " v14102020 by t0xic0der" + "\n" +
+		fmt.Print(spectrum.BG_GREEN(spectrum.TX_BOLD(spectrum.FR_BLACK("PRUDENCE/USAGE"))) + " v22102020 by t0xic0der" + "\n" +
 			"Visit https://github.com/t0xic0der/prudence for updates" + "\n" + "\n" +
-			colorformat.ForeCynBold("The following usages are available") + "\n" +
-			colorformat.ForeGrnRglr("--cetscycl") + " ...... " + "Know the state of Plains of Eidolon" + "\n" +
-			colorformat.ForeGrnRglr("--orbvcycl") + " ...... " + "Know the state of Orb Vallis" + "\n" +
-			colorformat.ForeGrnRglr("--conclave") + " ...... " + "Know the details of Conclave" + "\n" +
-			colorformat.ForeGrnRglr("--cnstruct") + " ...... " + "Know the progress of construction" + "\n" +
-			colorformat.ForeGrnRglr("--drvodeal") + " ...... " + "Know the deals available from Darvo" + "\n" +
-			colorformat.ForeGrnRglr("--fissures") + " ...... " + "Know the details of current void fissure missions" + "\n" +
-			colorformat.ForeGrnRglr("--invasion") + " ...... " + "Know the details about current invasions" + "\n" +
-			colorformat.ForeGrnRglr("--newsevnt") + " ...... " + "Know the details about current news" + "\n" +
-			colorformat.ForeGrnRglr("--nitewave") + " ...... " + "Know the details about nightwave missions" + "\n" + "\n")
+			spectrum.TX_BOLD(spectrum.FR_CYAN("The following usages are available")) + "\n" +
+			spectrum.FR_CYAN("--cetscycl") + " ...... " + "Know the state of Plains of Eidolon" + "\n" +
+			spectrum.FR_CYAN("--orbvcycl") + " ...... " + "Know the state of Orb Vallis" + "\n" +
+			spectrum.FR_CYAN("--conclave") + " ...... " + "Know the details of Conclave" + "\n" +
+			spectrum.FR_CYAN("--cnstruct") + " ...... " + "Know the progress of construction" + "\n" +
+			spectrum.FR_CYAN("--drvodeal") + " ...... " + "Know the deals available from Darvo" + "\n" +
+			spectrum.FR_CYAN("--fissures") + " ...... " + "Know the details of current void fissure missions" + "\n" +
+			spectrum.FR_CYAN("--invasion") + " ...... " + "Know the details about current invasions" + "\n" +
+			spectrum.FR_CYAN("--newsevnt") + " ...... " + "Know the details about current news" + "\n" +
+			spectrum.FR_CYAN("--nitewave") + " ...... " + "Know the details about nightwave missions" + "\n" + "\n")
 	}
 }

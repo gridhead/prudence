@@ -1,7 +1,6 @@
 package requestor
 
 import (
-	"../colorformat"
 	"fmt"
 	"github.com/t0xic0der/spectrum"
 	"github.com/tidwall/gjson"
@@ -17,7 +16,7 @@ func CetusCycle(platform string) {
 		if eror == nil {
 			var jsonobjc gjson.Result = gjson.Parse(string(body))
 			fmt.Println(spectrum.BG_GREEN((spectrum.TX_BOLD(spectrum.FR_BLACK("PRUDENCE/CETUS"))) + "\n"))
-			var textobjc string = colorformat.ForeCynBold(jsonobjc.Get("shortString").String()) + "\n" +
+			var textobjc string = spectrum.TX_BOLD(spectrum.FR_CYAN(jsonobjc.Get("shortString").String())) + "\n" +
 				spectrum.FR_GREEN("ID") + " .............. " + jsonobjc.Get("id").String() + "\n" +
 				spectrum.FR_GREEN("Expiry") + " .......... " + jsonobjc.Get("expiry").String() + "\n" +
 				spectrum.FR_GREEN("Activation") + " ...... " + jsonobjc.Get("activation").String() + "\n" +
@@ -43,7 +42,7 @@ func VallisCycle(platform string) {
 		if eror == nil {
 			var jsonobjc gjson.Result = gjson.Parse(string(body))
 			fmt.Println(spectrum.BG_GREEN(spectrum.TX_BOLD(spectrum.FR_BLACK("PRUDENCE/FORTUNA"))) + "\n")
-			var textobjc string = colorformat.ForeCynBold(jsonobjc.Get("shortString").String()) + "\n" +
+			var textobjc string = spectrum.TX_BOLD(spectrum.FR_CYAN(jsonobjc.Get("shortString").String())) + "\n" +
 				spectrum.FR_GREEN("ID") + " .............. " + jsonobjc.Get("id").String() + "\n" +
 				spectrum.FR_GREEN("Expiry") + " .......... " + jsonobjc.Get("expiry").String() + "\n" +
 				spectrum.FR_GREEN("Activation") + " ...... " + jsonobjc.Get("activation").String() + "\n" +
@@ -184,7 +183,7 @@ func InvasionData(platform string) {
 			jsonobjc.ForEach(func(keyd, valu gjson.Result) bool {
 				singchal := gjson.Parse(valu.String())
 				var textobjc string = spectrum.TX_BOLD(spectrum.FR_CYAN(singchal.Get("node").String())) + "\n" +
-					singchal.Get("desc").String() + " - " + colorformat.ForeMgtRglr(singchal.Get("attackingFaction").String()) + " vs " + colorformat.ForeBluRglr(singchal.Get("defendingFaction").String()) + "\n" +
+					singchal.Get("desc").String() + " - " + spectrum.FR_MAGENTA(singchal.Get("attackingFaction").String()) + " vs " + spectrum.FR_BLUE(singchal.Get("defendingFaction").String()) + "\n" +
 					spectrum.FR_GREEN("ID") + " .............. " + singchal.Get("id").String() + "\n" +
 					spectrum.FR_GREEN("Estimated time") + " .. " + singchal.Get("eta").String() + "\n" +
 					spectrum.FR_GREEN("Activation") + " ...... " + singchal.Get("activation").String() + "\n" + "\n"
