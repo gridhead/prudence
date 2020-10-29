@@ -10,6 +10,7 @@ import (
 var cetscycl, orbvcycl, conclave, cnstruct, drvodeal, fissures, invasion, newsevnt, nitewave bool
 
 func main() {
+	EnableVirtualTerminalProcessing()
 	flag.BoolVar(&cetscycl, "cetscycl", false, "Know the state of Plains of Eidolon")
 	flag.BoolVar(&orbvcycl, "orbvcycl", false, "Know the state of Orb Vallis")
 	flag.BoolVar(&conclave, "conclave", false, "Know the details about Conclave")
