@@ -2,14 +2,19 @@ package requestor
 
 import (
 	"fmt"
-	"github.com/t0xic0der/spectrum"
-	"github.com/tidwall/gjson"
 	"io/ioutil"
 	"net/http"
 	"strings"
+	"time"
+
+	"github.com/t0xic0der/spectrum"
+	"github.com/tidwall/gjson"
 )
 
 func CetusCycle(platform string) {
+	startTime := time.Now()
+	defer timeTracking(startTime)
+
 	resp, eror := http.Get("https://api.warframestat.us/" + platform + "/cetusCycle")
 	if eror == nil {
 		body, eror := ioutil.ReadAll(resp.Body)
@@ -22,8 +27,8 @@ func CetusCycle(platform string) {
 				spectrum.FR_GREEN("Activation") + " ...... " + jsonobjc.Get("activation").String() + "\n" +
 				spectrum.FR_GREEN("Is it day now?") + " .. " + strings.Title(jsonobjc.Get("isDay").String()) + "\n" +
 				spectrum.FR_GREEN("Cetus state") + " ..... " + strings.Title(jsonobjc.Get("state").String()) + "\n" +
-				spectrum.FR_GREEN("Time left") + " ....... " + jsonobjc.Get("timeLeft").String() + "\n" + "\n"
-			fmt.Print(textobjc)
+				spectrum.FR_GREEN("Time left") + " ....... " + jsonobjc.Get("timeLeft").String() + "\n"
+			fmt.Printf(textobjc + "\n")
 			defer resp.Body.Close()
 		} else {
 			fmt.Println(spectrum.BG_RED(spectrum.TX_BOLD(spectrum.FR_BLACK("PRUDENCE/WARNING"))) + "\n" +
@@ -36,6 +41,9 @@ func CetusCycle(platform string) {
 }
 
 func VallisCycle(platform string) {
+	startTime := time.Now()
+	defer timeTracking(startTime)
+
 	resp, eror := http.Get("https://api.warframestat.us/" + platform + "/vallisCycle")
 	if eror == nil {
 		body, eror := ioutil.ReadAll(resp.Body)
@@ -48,8 +56,8 @@ func VallisCycle(platform string) {
 				spectrum.FR_GREEN("Activation") + " ...... " + jsonobjc.Get("activation").String() + "\n" +
 				spectrum.FR_GREEN("Is it warm now?") + " . " + strings.Title(jsonobjc.Get("isWarm").String()) + "\n" +
 				spectrum.FR_GREEN("Cetus state") + " ..... " + strings.Title(jsonobjc.Get("state").String()) + "\n" +
-				spectrum.FR_GREEN("Time left") + " ....... " + jsonobjc.Get("timeLeft").String() + "\n" + "\n"
-			fmt.Print(textobjc)
+				spectrum.FR_GREEN("Time left") + " ....... " + jsonobjc.Get("timeLeft").String() + "\n"
+			fmt.Printf(textobjc + "\n")
 			defer resp.Body.Close()
 		} else {
 			fmt.Println(spectrum.BG_RED(spectrum.TX_BOLD(spectrum.FR_BLACK("PRUDENCE/WARNING"))) + "\n" +
@@ -62,6 +70,8 @@ func VallisCycle(platform string) {
 }
 
 func ConclaveChallenges(platform string) {
+	startTime := time.Now()
+	defer timeTracking(startTime)
 	resp, eror := http.Get("https://api.warframestat.us/" + platform + "/conclaveChallenges")
 	if eror == nil {
 		body, eror := ioutil.ReadAll(resp.Body)
@@ -76,8 +86,8 @@ func ConclaveChallenges(platform string) {
 					spectrum.FR_GREEN("Expiry") + " .......... " + singchal.Get("expiry").String() + "\n" +
 					spectrum.FR_GREEN("Activation") + " ...... " + singchal.Get("activation").String() + "\n" +
 					spectrum.FR_GREEN("Mode") + " ............ " + singchal.Get("mode").String() + "\n" +
-					spectrum.FR_GREEN("Estimated time") + " .. " + singchal.Get("eta").String() + "\n" + "\n"
-				fmt.Print(textobjc)
+					spectrum.FR_GREEN("Estimated time") + " .. " + singchal.Get("eta").String() + "\n"
+				fmt.Printf(textobjc + "\n")
 				return true
 			})
 			defer resp.Body.Close()
@@ -92,6 +102,9 @@ func ConclaveChallenges(platform string) {
 }
 
 func ConstructionProgress(platform string) {
+	startTime := time.Now()
+	defer timeTracking(startTime)
+
 	resp, eror := http.Get("https://api.warframestat.us/" + platform + "/constructionProgress")
 	if eror == nil {
 		body, eror := ioutil.ReadAll(resp.Body)
@@ -100,8 +113,8 @@ func ConstructionProgress(platform string) {
 			fmt.Println(spectrum.BG_GREEN(spectrum.TX_BOLD(spectrum.FR_BLACK("PRUDENCE/CONSTRUCTION"))) + "\n")
 			var textobjc string = spectrum.TX_BOLD(spectrum.FR_CYAN("Progress so far")) + "\n" +
 				spectrum.FR_GREEN("Fomorian") + " ........ " + jsonobjc.Get("fomorianProgress").String() + "\n" +
-				spectrum.FR_GREEN("Razorback") + " ....... " + jsonobjc.Get("razorbackProgress").String() + "\n" + "\n"
-			fmt.Print(textobjc)
+				spectrum.FR_GREEN("Razorback") + " ....... " + jsonobjc.Get("razorbackProgress").String() + "\n"
+			fmt.Printf(textobjc + "\n")
 			defer resp.Body.Close()
 		} else {
 			fmt.Println(spectrum.BG_RED(spectrum.TX_BOLD(spectrum.FR_BLACK("PRUDENCE/WARNING"))) + "\n" +
@@ -114,6 +127,8 @@ func ConstructionProgress(platform string) {
 }
 
 func DailyDeals(platform string) {
+	startTime := time.Now()
+	defer timeTracking(startTime)
 	resp, eror := http.Get("https://api.warframestat.us/" + platform + "/dailyDeals")
 	if eror == nil {
 		body, eror := ioutil.ReadAll(resp.Body)
@@ -144,6 +159,9 @@ func DailyDeals(platform string) {
 }
 
 func VoidFissures(platform string) {
+	startTime := time.Now()
+	defer timeTracking(startTime)
+
 	resp, eror := http.Get("https://api.warframestat.us/" + platform + "/fissures")
 	if eror == nil {
 		body, eror := ioutil.ReadAll(resp.Body)
@@ -158,8 +176,8 @@ func VoidFissures(platform string) {
 					spectrum.FR_GREEN("Expiry") + " .......... " + singchal.Get("expiry").String() + "\n" +
 					spectrum.FR_GREEN("Activation") + " ...... " + singchal.Get("activation").String() + "\n" +
 					spectrum.FR_GREEN("Enemy") + " ........... " + singchal.Get("enemy").String() + "\n" +
-					spectrum.FR_GREEN("Estimated time") + " .. " + singchal.Get("eta").String() + "\n" + "\n"
-				fmt.Print(textobjc)
+					spectrum.FR_GREEN("Estimated time") + " .. " + singchal.Get("eta").String() + "\n"
+				fmt.Print(textobjc + "\n")
 				return true
 			})
 			defer resp.Body.Close()
@@ -174,6 +192,9 @@ func VoidFissures(platform string) {
 }
 
 func InvasionData(platform string) {
+	startTime := time.Now()
+	defer timeTracking(startTime)
+
 	resp, eror := http.Get("https://api.warframestat.us/" + platform + "/invasions")
 	if eror == nil {
 		body, eror := ioutil.ReadAll(resp.Body)
@@ -186,8 +207,8 @@ func InvasionData(platform string) {
 					singchal.Get("desc").String() + " - " + spectrum.FR_MAGENTA(singchal.Get("attackingFaction").String()) + " vs " + spectrum.FR_BLUE(singchal.Get("defendingFaction").String()) + "\n" +
 					spectrum.FR_GREEN("ID") + " .............. " + singchal.Get("id").String() + "\n" +
 					spectrum.FR_GREEN("Estimated time") + " .. " + singchal.Get("eta").String() + "\n" +
-					spectrum.FR_GREEN("Activation") + " ...... " + singchal.Get("activation").String() + "\n" + "\n"
-				fmt.Print(textobjc)
+					spectrum.FR_GREEN("Activation") + " ...... " + singchal.Get("activation").String() + "\n"
+				fmt.Printf(textobjc + "\n")
 				return true
 			})
 			defer resp.Body.Close()
@@ -202,6 +223,9 @@ func InvasionData(platform string) {
 }
 
 func NewsEvents(platform string) {
+	startTime := time.Now()
+	defer timeTracking(startTime)
+
 	resp, eror := http.Get("https://api.warframestat.us/" + platform + "/news")
 	if eror == nil {
 		body, eror := ioutil.ReadAll(resp.Body)
@@ -214,8 +238,8 @@ func NewsEvents(platform string) {
 					singchal.Get("link").String() + "\n" +
 					spectrum.FR_GREEN("ID") + " .............. " + singchal.Get("id").String() + "\n" +
 					spectrum.FR_GREEN("Date") + " ............ " + singchal.Get("date").String() + "\n" +
-					spectrum.FR_GREEN("Estimated time") + " .. " + singchal.Get("eta").String() + "\n" + "\n"
-				fmt.Print(textobjc)
+					spectrum.FR_GREEN("Estimated time") + " .. " + singchal.Get("eta").String() + "\n"
+				fmt.Print(textobjc + "\n")
 				return true
 			})
 			defer resp.Body.Close()
@@ -230,6 +254,9 @@ func NewsEvents(platform string) {
 }
 
 func NightWaveChallenges(platform string) {
+	startTime := time.Now()
+	defer timeTracking(startTime)
+
 	resp, eror := http.Get("https://api.warframestat.us/" + platform + "/nightwave")
 	if eror == nil {
 		body, eror := ioutil.ReadAll(resp.Body)
@@ -248,7 +275,7 @@ func NightWaveChallenges(platform string) {
 					spectrum.FR_GREEN("Expiry") + " .......... " + singchal.Get("expiry").String() + "\n" +
 					spectrum.FR_GREEN("Started at ") + " ..... " + singchal.Get("startString").String() + "\n" +
 					spectrum.FR_GREEN("Reputation") + " ...... " + singchal.Get("reputation").String() + " standing" + "\n"
-				fmt.Print(textobjc)
+				fmt.Print(textobjc + "\n")
 				return true
 			})
 			fmt.Println()
@@ -261,4 +288,8 @@ func NightWaveChallenges(platform string) {
 		fmt.Println(spectrum.BG_RED(spectrum.TX_BOLD(spectrum.FR_BLACK("PRUDENCE/WARNING"))) + "\n" +
 			"The information could not be fetched")
 	}
+}
+
+func timeTracking(startTime time.Time) {
+	fmt.Println(spectrum.FR_GREEN("Request Time") + " ... " + time.Since(startTime).Round(time.Millisecond).String() + "\n")
 }
