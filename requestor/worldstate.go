@@ -291,5 +291,5 @@ func NightWaveChallenges(platform string) {
 }
 
 func timeTracking(startTime time.Time) {
-	fmt.Println(spectrum.FR_GREEN("Request Time") + " ... " + time.Since(startTime).Round(time.Millisecond).String() + "\n")
+	fmt.Println(spectrum.FR_GREEN("Request Time") + " .... " + time.Since(startTime).Round(time.Millisecond).String() + "\n")
 }

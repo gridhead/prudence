@@ -3,14 +3,14 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/t0xic0der/spectrum"
 	"github.com/t0xic0der/prudence/requestor"
+	"github.com/t0xic0der/spectrum"
 )
 
 var cetscycl, orbvcycl, conclave, cnstruct, drvodeal, fissures, invasion, newsevnt, nitewave bool
 
 func main() {
-	EnableVirtualTerminalProcessing()
+	//EnableVirtualTerminalProcessing()
 	flag.BoolVar(&cetscycl, "cetscycl", false, "Know the state of Plains of Eidolon")
 	flag.BoolVar(&orbvcycl, "orbvcycl", false, "Know the state of Orb Vallis")
 	flag.BoolVar(&conclave, "conclave", false, "Know the details about Conclave")
